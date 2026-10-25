@@ -103,11 +103,12 @@ return Response.json({ url: cartCreate.cart.checkoutUrl });   // browser redirec
 - Optional: connect a subdomain like `shop.example.com` to Shopify so checkout shows the brand's domain.
 
 ## 5. Orders webhook → site database
-Owner creates it in Shopify admin: **Settings → Notifications → Webhooks → Create webhook**:
-- Event **Order creation**, Format **JSON**, URL `https://<production-domain>/api/shopify/orders`, latest stable API version → Save. Add a second one for **Order payment** to the same URL to update payment status.
-- Copy the signing key shown on that page ("Your webhooks will be signed with …") into the Grok Bot vault and `SHOPIFY_WEBHOOK_SECRET`.
+**You (the bot) create the webhooks yourself. The owner never does it.**
+- With the store's Admin API access token from the vault, call the Admin GraphQL `webhookSubscriptionCreate` twice: topic `ORDERS_CREATE` and topic `ORDERS_PAID`, both with format JSON and callback URL `https://<production-domain>/api/shopify/orders`. Then list the subscriptions to confirm both exist.
+- Webhooks made through the API are signed with the app's **client secret** (API secret key). Write it straight to the Grok Bot vault and `SHOPIFY_WEBHOOK_SECRET`; never show it in chat.
+- Only if you can't use the API, explain the admin step in plain words: **Settings → Notifications → Webhooks → Create webhook**, Event **Order creation** and a second for **Order payment**, Format **JSON**, the URL above, latest stable API version → Save. Those are signed with the key shown on that page ("Your webhooks will be signed with …"), so use that key instead and save it to the vault yourself.
 - URL rules: must be https and public; not localhost, not a `shopify.com` / `myshopify.com` address, and not a custom domain that's connected to the Shopify store itself. Use the website's own domain.
-- Use **Send test** to check the endpoint answers 200 (test payloads won't match a real customer).
+- Check the endpoint answers 200: place a test order on the development store (or use **Send test** for admin-made webhooks; test payloads won't match a real customer).
 
 ```ts
 // app/api/shopify/orders/route.ts

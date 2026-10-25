@@ -32,8 +32,8 @@ Rules that keep this simple:
 - Ask the owner for nothing secret in chat. Keys go in the Grok Bot vault and in the hosting env vars.
 
 ## 1. Supabase project and keys
-1. The owner creates a project at https://supabase.com/dashboard (or installs Supabase from the Vercel Marketplace, which creates the project and syncs env vars for them). Dashboard labels: **Create a new organization** (Name, Type, Plan: Free - $0/month → **Create organization**), then **Create a new project** (Organization, Project name, Database password → **Generate a password**, Region closest to their customers). Under Security, keep **Enable Data API**, and have them tick **Enable automatic RLS** (row level security switched on for every new table). Then **Create new project**. Still write explicit RLS policies for every table; never rely on the auto setting alone.
-2. Keys: project **Settings → API Keys**, tab **Publishable and secret API keys**, sections **Publishable key** and **Secret keys** (if empty, **New secret key** / **Create new API keys**). The top-bar **Connect** button shows the Project URL.
+1. **You (the bot) create the project through the Supabase connector. The owner never does it.** The owner only makes a Supabase account (email sign-up; if Supabase forces **Create a new organization**: Name = their business, Type Personal, Plan **Free - $0/month**), saves the login in the vault and connects Supabase in Grok Bot. Then, with the connector: create the project in their organisation (name = business name, region closest to their customers, a generated database password saved straight to the vault, never shown in chat), keep the Data API on, and switch on row level security for every new table. Still write explicit RLS policies for every table; never rely on an auto setting alone. Don't ask the owner to open **Create a new project**, copy API keys or tick security boxes. Only if the connector can't do a step, explain the dashboard step in plain words: **Create a new project** (Organization, Project name, Database password → **Generate a password**, Region), Security: keep **Enable Data API**, tick **Enable automatic RLS**, then **Create new project**.
+2. Keys: fetch them through the connector and write them straight to the vault and the hosting env vars; never paste keys in chat or ask the owner to copy them. For reference, the dashboard has them at project **Settings → API Keys**, tab **Publishable and secret API keys**, sections **Publishable key** and **Secret keys** (if empty, **New secret key** / **Create new API keys**). The top-bar **Connect** button shows the Project URL.
    - **Publishable key** `sb_publishable_...`: safe in the browser; row level security applies.
    - **Secret key** `sb_secret_...`: server only. Bypasses row level security. Never in client code, never in `NEXT_PUBLIC_*`, never in git, never in chat.
    - Older projects may show legacy `anon` / `service_role` keys. Prefer the new keys; legacy keys are being retired.
@@ -196,7 +196,7 @@ create policy "own orders"   on public.orders   for select to authenticated usin
 4. **Success page** says "Thanks, we're confirming your payment" and reads the booking status. It never marks anything paid.
 
 ## 5. Stripe webhook (the only thing that marks a booking paid)
-- Create it in the Stripe Dashboard: **Workbench → Webhooks → + Add destination**, events `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`, endpoint `https://<production-domain>/api/stripe/webhook`. Do it in **test mode / sandbox first**. Copy the signing secret (`whsec_...`) into the Grok Bot vault and `STRIPE_WEBHOOK_SECRET`.
+- **You (the bot) create the webhook yourself. The owner never does it.** Use the Stripe connector, or the Stripe API (`POST /v1/webhook_endpoints`) with the secret key from the vault: endpoint `https://<production-domain>/api/stripe/webhook`, events `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`. Do it in **test mode / sandbox first**. The signing secret (`whsec_...`) is returned only once, when the endpoint is created: write it straight to the Grok Bot vault and `STRIPE_WEBHOOK_SECRET`, never show it in chat. Check it with a test event (`stripe trigger checkout.session.completed` or the API) and confirm the booking turns `paid`. Only if you can't create it, explain the dashboard step in plain words: **Workbench → Webhooks → + Add destination**, the events and endpoint above, then save the signing secret to the vault yourself.
 - Locally: `stripe listen --forward-to localhost:3000/api/stripe/webhook`.
 
 ```ts
@@ -243,7 +243,7 @@ export async function POST(req: Request) {
 - Return 2xx fast; send confirmation emails after the update (or from a database trigger), not before.
 
 ## 6. Cancellations and refunds
-Start simple: the owner cancels and refunds in the Stripe Dashboard and sets the booking to `cancelled` in Supabase. Add a customer "Cancel" button (with the owner's cancellation rule, e.g. 24 hours' notice) only when asked; it must run server-side and call Stripe Refunds.
+Start simple: when the owner asks you to cancel a booking, you refund it through the Stripe connector or API and set the booking to `cancelled` in Supabase, then tell the owner in plain words. The owner can also refund in the Stripe Dashboard; if they do, you still set the booking to `cancelled`. Add a customer "Cancel" button (with the owner's cancellation rule, e.g. 24 hours' notice) only when asked; it must run server-side and call Stripe Refunds.
 
 ## 7. Never commit secrets
 - `.env*` in `.gitignore`. Only `NEXT_PUBLIC_*` values may reach the browser.
@@ -254,7 +254,7 @@ Start simple: the owner cancels and refunds in the Stripe Dashboard and sets the
 1. Branch + PR with: migration, auth pages, calendar, checkout route, webhook route, My account.
 2. Preview link. On the preview, in Stripe test mode: register with a real inbox, confirm the email, book a slot, pay with test card `4242 4242 4242 4242`, see it as **paid** in My account and in the Supabase table. Try to book the same slot twice: the second attempt must be refused.
 3. Show the owner in plain words; publish only on their yes.
-4. Go-live (separate yes): swap to live Stripe keys and a live-mode webhook destination, set Production env vars, redeploy, make one small real booking and refund it.
+4. Go-live (separate yes): swap to live Stripe keys and create the live-mode webhook destination yourself (same way as above), set Production env vars, redeploy, make one small real booking and refund it.
 5. Log it in the audit log.
 
 ## Plain-language summary for the owner

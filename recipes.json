@@ -61,8 +61,8 @@
       "path": "website/shop-with-shopify-headless/SKILL.md",
       "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/shop-with-shopify-headless/SKILL.md",
       "description": "Sell products on the website in its own design, with Shopify handling stock and checkout.",
-      "version": "1.0.0",
-      "sha256": "e3d4043c6656fab49a40698c4bb1b445a7bd843dd51864aa0d453389928960cb"
+      "version": "1.0.1",
+      "sha256": "9a0cbe420c718147a634a0756673246be5deca01176ceca48fb08581d68df192"
     },
     {
       "id": "user-accounts-and-bookings-with-supabase",
@@ -71,8 +71,8 @@
       "path": "website/user-accounts-and-bookings-with-supabase/SKILL.md",
       "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/user-accounts-and-bookings-with-supabase/SKILL.md",
       "description": "Customer log-in, a booking calendar and paid bookings, using Supabase and Stripe.",
-      "version": "1.0.0",
-      "sha256": "cae740b4867e4b5d476a00f9ad4c66e06eaf1b615c9ccfa1d30f52503e223412"
+      "version": "1.0.1",
+      "sha256": "a2526dde74d07ea8d457b7e7b83051dd53c0bddb60544e24a711cfb166fc413a"
     },
     {
       "id": "website-factory-modules",
