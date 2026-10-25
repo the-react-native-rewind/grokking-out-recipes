@@ -1,0 +1,148 @@
+{
+  "name": "Grokking Out recipes",
+  "manifest_version": 1,
+  "updated": "2026-10-25",
+  "source": "https://github.com/the-react-native-rewind/grokking-out-recipes",
+  "recipes": [
+    {
+      "id": "never-straight-to-main",
+      "name": "Never straight to main",
+      "group": "general",
+      "path": "general/never-straight-to-main/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/general/never-straight-to-main/SKILL.md",
+      "description": "Every change gets a private preview link first and only goes live when the owner says yes.",
+      "version": "1.0.0",
+      "sha256": "02ff5cf1131ec0c5895c58d8b0d013fa74d0c87845cfe9f0869e66bdbe9006af"
+    },
+    {
+      "id": "notion-project-spec-and-audit-log",
+      "name": "Notion project spec and audit log",
+      "group": "general",
+      "path": "general/notion-project-spec-and-audit-log/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/general/notion-project-spec-and-audit-log/SKILL.md",
+      "description": "Optional: keep a Notion page with the project plan and a log of everything the bot has done.",
+      "version": "1.0.0",
+      "sha256": "a5b53537cf2df0c185d56770f333e977cacc1936e1d837cb1e489b20474a61c9"
+    },
+    {
+      "id": "plain-language-for-business-owners",
+      "name": "Plain language for business owners",
+      "group": "general",
+      "path": "general/plain-language-for-business-owners/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/general/plain-language-for-business-owners/SKILL.md",
+      "description": "Talk to the owner in plain words: what changed, where to see it, and what you need from them.",
+      "version": "1.0.0",
+      "sha256": "a1ce058bb244dd7b3bf97c14810c6548735b757f8f5b0c09e957c4f50ea15812"
+    },
+    {
+      "id": "deploy-a-site-to-vercel",
+      "name": "Deploy a site to Vercel",
+      "group": "website",
+      "path": "website/deploy-a-site-to-vercel/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/deploy-a-site-to-vercel/SKILL.md",
+      "description": "Put a website online with Vercel: preview, check, share, publish on a yes, and roll back if needed.",
+      "version": "1.0.0",
+      "sha256": "d7457eeb2500d18db0eeee62bb2d3517c89ab0adfc81962e6b358cb69ebd6088"
+    },
+    {
+      "id": "publish-or-view-buttons-for-vercel-links",
+      "name": "Publish or view buttons for Vercel links",
+      "group": "website",
+      "path": "website/publish-or-view-buttons-for-vercel-links/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/publish-or-view-buttons-for-vercel-links/SKILL.md",
+      "description": "Share preview links with a 'View' link and a 'Publish to live / Not yet' question.",
+      "version": "1.0.0",
+      "sha256": "16645fa7c8d0873c7298a2fa366a0c1b55e6ba7ac04b0bb3677475cc7622c2ba"
+    },
+    {
+      "id": "shop-with-shopify-headless",
+      "name": "Shop with Shopify (headless)",
+      "group": "website",
+      "path": "website/shop-with-shopify-headless/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/shop-with-shopify-headless/SKILL.md",
+      "description": "Sell products on the website in its own design, with Shopify handling stock and checkout.",
+      "version": "1.0.0",
+      "sha256": "e3d4043c6656fab49a40698c4bb1b445a7bd843dd51864aa0d453389928960cb"
+    },
+    {
+      "id": "user-accounts-and-bookings-with-supabase",
+      "name": "User accounts and bookings with Supabase",
+      "group": "website",
+      "path": "website/user-accounts-and-bookings-with-supabase/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/user-accounts-and-bookings-with-supabase/SKILL.md",
+      "description": "Customer log-in, a booking calendar and paid bookings, using Supabase and Stripe.",
+      "version": "1.0.0",
+      "sha256": "cae740b4867e4b5d476a00f9ad4c66e06eaf1b615c9ccfa1d30f52503e223412"
+    },
+    {
+      "id": "website-factory-modules",
+      "name": "Website factory modules",
+      "group": "website",
+      "path": "website/website-factory-modules/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/website/website-factory-modules/SKILL.md",
+      "description": "Decide whether a website needs customer accounts, bookings or a shop, and load the right recipe.",
+      "version": "1.0.0",
+      "sha256": "7fbb76044aea005393740470f766080a6fad03b1a04e859c91240158f8af885d"
+    },
+    {
+      "id": "email-factory",
+      "name": "Email Factory",
+      "group": "email",
+      "path": "email/email-factory/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/email/email-factory/SKILL.md",
+      "description": "Set up the business's email: website emails, a newsletter, welcome emails and inbox help.",
+      "version": "1.0.0",
+      "sha256": "cada2f442960d02c6ae82c9146edb9cdf5ebf521fdc0064ca8e1b0d2e2ec61bf"
+    },
+    {
+      "id": "email-sequence-preview",
+      "name": "Email sequence preview",
+      "group": "email",
+      "path": "email/email-sequence-preview/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/email/email-sequence-preview/SKILL.md",
+      "description": "Show draft emails on a private page of the owner's own website so they can read them first.",
+      "version": "1.0.0",
+      "sha256": "94975876bfee6c3ef057bc16799a3f4da333d19fd0438b2e2a28006f5bd54777"
+    },
+    {
+      "id": "email-sequences-end-to-end",
+      "name": "Email sequences end to end",
+      "group": "email",
+      "path": "email/email-sequences-end-to-end/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/email/email-sequences-end-to-end/SKILL.md",
+      "description": "Plan, write, preview and set up a series of emails, with nothing sent without the owner's yes.",
+      "version": "1.0.0",
+      "sha256": "9d28c7cea52f4b20d8afb85cf25f5f8759e3fc75c44954eca3bf441e3b1e0046"
+    },
+    {
+      "id": "prepare-newsletter-email-media",
+      "name": "Prepare newsletter email media",
+      "group": "email",
+      "path": "email/prepare-newsletter-email-media/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/email/prepare-newsletter-email-media/SKILL.md",
+      "description": "Resize, compress, number and file the pictures and GIFs for a newsletter issue.",
+      "version": "1.0.0",
+      "sha256": "93ecf52d2aee0e71db570b99c37b657a95405e249c70981dfcbf682725112f43"
+    },
+    {
+      "id": "accounting-factory",
+      "name": "Accounting Factory",
+      "group": "accounting",
+      "path": "accounting/accounting-factory/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/accounting/accounting-factory/SKILL.md",
+      "description": "Keep the business's invoices, receipts and statements complete and tidy for the accountant.",
+      "version": "1.0.0",
+      "sha256": "f137afbb98a26864468a3dea44b275dd3569ee7841b5f85ded0a9c3b95af5f1f"
+    },
+    {
+      "id": "fetch-business-invoices",
+      "name": "Fetch business invoices",
+      "group": "accounting",
+      "path": "accounting/fetch-business-invoices/SKILL.md",
+      "url": "https://raw.githubusercontent.com/the-react-native-rewind/grokking-out-recipes/main/accounting/fetch-business-invoices/SKILL.md",
+      "description": "Track down missing invoices and receipts for a bookkeeping period.",
+      "version": "1.0.0",
+      "sha256": "dd72dd1293abfcb6b809a80a9a0a044aa41ba17cb77f6f84a129d8b030fa1261"
+    }
+  ]
+}
